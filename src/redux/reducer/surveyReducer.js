@@ -5,6 +5,7 @@ const surveyReducer =(state={},action)=>{
             return state
         case 'ADD_SURVEY_ERROR':
             console.log('Error adding product',action)
+            break
         default:
             return state
     }

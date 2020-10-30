@@ -2,13 +2,16 @@
  padding-top: 200px;
 }
 .selection{
-  color: black;
+  color: white;
   font-size: 30pt;
   font-weight: bolder;
   height: 100px;
   border-radius: 10px;
 }
 .survey-div{
+  padding-top: 100px;
+}
+.results-div{
   padding-top: 100px;
 }
 .hr-style{

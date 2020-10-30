@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {useFormik,Formik,Form,Field} from 'formik'
 import {connect} from 'react-redux';
 import {addSurvey} from '../../redux/actions/surveyActions'
+import {Redirect} from 'react-router-dom';
 
 function SurveyPage({addSurvey}) {
+    const [redirectToReferrer,setredirectToReferrer]=useState(null)
+
     const formik = useFormik({
         initialValues:{
         surname:'',
@@ -18,7 +21,7 @@ function SurveyPage({addSurvey}) {
         onSubmit:values=>{
             console.log(values)
             addSurvey(values)  
-                      //setredirectToReferrer(true)
+            setredirectToReferrer(true)
         },
         validate:values=>{
             let errors ={}
@@ -59,6 +62,8 @@ function SurveyPage({addSurvey}) {
     })
     return (
         <div>
+            { redirectToReferrer ? <Redirect to="/" />:null}
+
             <div className="row survey-div mb-4">
                 <h2 className="col-12 mb-4">Take our survey</h2>
                 

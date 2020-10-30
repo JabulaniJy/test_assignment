@@ -1,6 +1,5 @@
 import React from 'react'
-import {useFormik} from 'formik'
-import { Form } from 'react-bootstrap';
+import {useFormik,Formik,Form,Field} from 'formik'
 
 
 function SurveyPage() {
@@ -8,9 +7,17 @@ function SurveyPage() {
         initialValues:{
         surname:'',
         firstnames:'',
-        contact:''
+        contact:'',
+        favourite_food:[],
+        eat_out:'',
+        watch_movies:'',
+        watch_tv:'',
+
+
+
         },
         onSubmit:values=>{
+            console.log(values)
            // props.updateProduct(values)
             //setredirectToReferrer(true)
         },
@@ -57,7 +64,10 @@ function SurveyPage() {
                 <h2 className="col-12 mb-4">Take our survey</h2>
                 
                 <div className="col-10  m-auto">
-                    <form onSubmit={formik.handleSubmit}>
+                    <Formik
+                    
+                    >
+                    <Form onSubmit={formik.handleSubmit}>
                         <h4>Personal Details</h4>
                         <div className="form-group row">
                             <label for="surname" className="col-2">Surname</label>
@@ -87,28 +97,28 @@ function SurveyPage() {
                         <hr className="hr-style"/>
                         <p>What is your favourite food? (You can choose more than 1 answer)</p>
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="pizza" value="Pizza"/>
+                            <Field type="checkbox" className="custom-control-input" onChange={formik.handleChange}  checked={formik.value} value="pizza" name="favourite_food" id="pizza" />
                             <label className="custom-control-label" for="pizza">Pizza</label>
                         </div>
 
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="pasta"/>
+                            <Field type="checkbox" className="custom-control-input" value="pasta"  onChange={formik.handleChange}  checked={formik.value} name="favourite_food" id="pasta"/>
                             <label className="custom-control-label" for="pasta">Pasta</label>
                         </div>
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="papAndWors" value="Pap and Wors"/>
+                            <Field type="checkbox" className="custom-control-input" name="favourite_food"  onChange={formik.handleChange}  checked={formik.value} id="papAndWors" value="Pap and Wors"/>
                             <label className="custom-control-label" for="papAndWors">Pap and Wors</label>
                         </div>
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="chickenStirFry" value="Chicken stir fry"/>
+                            <Field type="checkbox" className="custom-control-input" name="favourite_food"  onChange={formik.handleChange}  checked={formik.value} id="chickenStirFry" value="Chicken stir fry"/>
                             <label className="custom-control-label" for="chickenStirFry">Chicken stir fry</label>
                         </div>
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="beefStirFry" value="Beef stir fry"/>
+                            <Field type="checkbox" className="custom-control-input" name="favourite_food"  onChange={formik.handleChange}  checked={formik.value} id="beefStirFry" value="Beef stir fry"/>
                             <label className="custom-control-label" for="beefStirFry">Beef stir fry</label>
                         </div>
                         <div className="custom-control custom-checkbox ml-3">
-                            <input type="checkbox" className="custom-control-input" id="other" value="Other"/>
+                            <Field type="checkbox" className="custom-control-input" name="favourite_food" onChange={formik.handleChange}  checked={formik.value} id="other" value="Other"/>
                             <label className="custom-control-label" for="other">Other</label>
                         </div>
                         <hr className="hr-style"/>
@@ -129,27 +139,27 @@ function SurveyPage() {
                                     <th scope="row">I like to eat out</th>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="eatOutRating" id="radio1" value="1"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="eat_out" id="radio1" value="1"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="eatOutRating" id="radio2" value="2"/>
+                                            <input className="form-check-input " type="radio" name="eat_out" id="radio2" onChange={formik.handleChange}  checked={formik.value} value="2"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="eatOutRating" id="radio3" value="3"/>
+                                            <input className="form-check-input " type="radio" name="eat_out" id="radio3" onChange={formik.handleChange}  checked={formik.value} value="3"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="eatOutRating" id="radio4" value="4"/>
+                                            <input className="form-check-input " type="radio" name="eat_out" id="radio4" onChange={formik.handleChange}  checked={formik.value} value="4"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="eatOutRating" id="radio5" value="5"/>
+                                            <input className="form-check-input " type="radio" name="eat_out" id="radio5" onChange={formik.handleChange}  checked={formik.value} value="5"/>
                                         </div>
                                     </td>  
                                 </tr>
@@ -157,27 +167,27 @@ function SurveyPage() {
                                     <th scope="row">I like to watch movies</th>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchMoviesRating" id="radio1" value="1"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_movies" id="radio1" value="1"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchMoviesRating" id="radio2" value="2"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_movies" id="radio2" value="2"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchMoviesRating" id="radio3" value="3"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_movies" id="radio3" value="3"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchMoviesRating" id="radio4" value="4"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_movies" id="radio4" value="4"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchMoviesRating" id="radio5" value="5"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_movies" id="radio5" value="5"/>
                                         </div>
                                     </td>    
                                 </tr>
@@ -185,27 +195,27 @@ function SurveyPage() {
                                     <th scope="row">I like to watch TV</th>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchTvRating" id="radio1" value="1"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_tv" id="radio1" value="1"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchTvRating" id="radio2" value="2"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_tv" id="radio2" value="2"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchTvRating" id="radio3" value="3"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_tv" id="radio3" value="3"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchTvRating" id="radio4" value="4"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_tv" id="radio4" value="4"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="watchTvRating" id="radio5" value="5"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="watch_tv" id="radio5" value="5"/>
                                         </div>
                                     </td>    
                                 </tr>
@@ -213,27 +223,27 @@ function SurveyPage() {
                                     <th scope="row">I like to listen to the radio</th>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="radioRating" id="radio1" value="1"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="radio" id="radio1" value="1"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="radioRating" id="radio2" value="2"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="radio" id="radio2" value="2"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="radioRating" id="radio3" value="3"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="radio" id="radio3" value="3"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="radioRating" id="radio4" value="4"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="radio" id="radio4" value="4"/>
                                         </div>
                                     </td>
                                     <td>
                                         <div className="form-check d-flex justify-content-center">
-                                            <input className="form-check-input " type="radio" name="radioRating" id="radio5" value="5"/>
+                                            <input className="form-check-input " type="radio" onChange={formik.handleChange}  checked={formik.value} name="radio" id="radio5" value="5"/>
                                         </div>
                                     </td>    
                                 </tr>
@@ -244,7 +254,8 @@ function SurveyPage() {
                             <button type="submit" class="btn btn-primary m-auto">Submit</button>
                         </div>
 
-                    </form>
+                    </Form>
+                    </Formik>
                 </div>
             </div>
             

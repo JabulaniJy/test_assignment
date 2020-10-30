@@ -86,12 +86,12 @@ function ResultsPage(props) {
         <div className="results-div mb-4">
             {surveys?preferenceCount():null}
             {surveys?activitiesAvg():null}
-
+            <h3>Results</h3>
             <div className="row ">
                 <div className="col-8 m-auto">
                     <ul class="list-group mb-4">
                         <li class="list-group-item">Total number of surveys: <b className="ml-4">{surveys?countSurveys:null}  </b></li>
-                        <li class="list-group-item">Average age: <b className="ml-4">{surveys?countAge():null}</b> </li>
+                        <li class="list-group-item">Average age: <b className="ml-4">{surveys?countAge().toFixed(1):null}</b> </li>
                         <li class="list-group-item">Oldest person who participated in survey <b className="ml-4">{oldest}</b></li>
                         <li class="list-group-item">Youngest person who participated in survey <b className="ml-4">{youngest}</b></li>
                     </ul>

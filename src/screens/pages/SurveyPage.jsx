@@ -1,8 +1,9 @@
 import React from 'react'
 import {useFormik,Formik,Form,Field} from 'formik'
+import {connect} from 'react-redux';
+import {addSurvey} from '../../redux/actions/surveyActions'
 
-
-function SurveyPage() {
+function SurveyPage({addSurvey}) {
     const formik = useFormik({
         initialValues:{
         surname:'',
@@ -12,14 +13,12 @@ function SurveyPage() {
         eat_out:'',
         watch_movies:'',
         watch_tv:'',
-
-
-
+        radio:''
         },
         onSubmit:values=>{
             console.log(values)
-           // props.updateProduct(values)
-            //setredirectToReferrer(true)
+            addSurvey(values)  
+                      //setredirectToReferrer(true)
         },
         validate:values=>{
             let errors ={}
@@ -262,5 +261,10 @@ function SurveyPage() {
         </div>
     )
 }
+const mapDispatchToProps= (dispatch)=>{
+    return{
+        addSurvey:(response)=>dispatch(addSurvey(response)),
+    }
+}
+export default connect(null,mapDispatchToProps)(SurveyPage);
 
-export default SurveyPage
